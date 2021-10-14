@@ -1,0 +1,49 @@
+.home-container {
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid red;
+}
+
+.home-card {
+  border: 1px solid orange;
+  border-radius: 20px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  background: #fff;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.home-content-container {
+  border: 1px solid blue;
+  padding: 10px;
+}
+
+.home-content-container h1 {
+  font-size: 1em;
+  border: 1px solid yellow;
+}
+
+.home-content-container p {
+  border: 1px solid green;
+  color: #9e9e9e;
+  font-size: 0.6em;
+}
+
+.home-content-container button {
+  border: 1px solid plum;
+  width: 260px;
+}
+
+.home-image-container {
+  border: 1px solid purple;
+}
+
+.home-image-container {
+  padding: 50px 15px;
+}
+
+.home-image-container svg {
+  width: 100%;
+  height: auto;
+}
