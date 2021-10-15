@@ -1,5 +1,12 @@
-.btn-icon{
-    text-transform: uppercase;
-    width: 260px;
-    height: 50px;
+.btn-icon {
+  text-transform: uppercase;
+  width: 260px;
+  height: 50px;
+  color: #fff !important;
+}
+
+.btn-icon:hover {
+  background: #fff !important;
+  color: #5d8fff !important;
+  transition: 0.7s;
 }
