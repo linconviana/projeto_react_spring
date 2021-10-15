@@ -2,6 +2,7 @@ import "./styles.css";
 
 import { ReactComponent as ArrowIcon } from "assets/images/arrow.svg";
 
+/*Passar texto do botão via props */
 type Props = {
   text: string;
 }
