@@ -28,9 +28,9 @@
   margin-bottom: 30px;
 }
 
-.home-content-container button {
+/*.home-content-container button {
   width: 260px;
-}
+}*/
 
 .home-image-container {
   padding: 50px 15px;
@@ -58,9 +58,9 @@
     margin-bottom: 30px;
   }
 
-  .home-content-container button {
+  /*.home-content-container button {
     width: 400px;
-  }
+  }*/
 
   .home-image-container svg {
     width: 506px;
