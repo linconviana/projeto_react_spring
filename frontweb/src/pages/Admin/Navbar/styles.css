@@ -25,12 +25,36 @@
   letter-spacing: 0.015em;
 }
 
-.admin-nav-item.active, .admin-nav-item:hover{
-    color: #407bff;
-    background: rgba(64,123,255,0.3);
-    transition: 0.6s;
+.admin-nav-item.active,
+.admin-nav-item:hover {
+  color: #407bff;
+  background: rgba(64, 123, 255, 0.3);
+  transition: 0.6s;
+}
+
+.admin-nav-item p {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .admin-nav-container {
+    padding: 0;
+    height: calc(100vh - 90px);
   }
 
-.admin-nav-item p{
-    margin-bottom: 0;
+  .admin-nav-container ul {
+    display: block;
+    justify-content: unset;
   }
+
+  .admin-nav-item {
+    border-radius: 0;
+    font-size: 18px;
+    height: 80px;
+    background: #fff;
+    border-bottom: 1px solid #e1e1e1;
+    justify-content: flex-start;
+    padding-left: 40px;
+  }
+
+}
