@@ -21,9 +21,7 @@ const ProductDetails = () => {
 
     axios.get(`${BASE_URL}/products/${productId}`)
     .then((response) => {
-      debugger;
       setProduct(response.data);
-      console.log(response.data);
     });
 
   }, [productId]);

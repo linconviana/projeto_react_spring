@@ -7,10 +7,14 @@ import { Product } from "types/product";
 import { AxiosParams } from "types/vendor/axios";
 import { SpringPage } from "types/vendor/spring";
 import { BASE_URL } from "util/requests";
+
+//import {ReactComponent as Loading} from 'assets/images/ellipse.gif';
 import "./styles.css";
 
 const Catalog = () => {
   const [page, setPage] = useState<SpringPage<Product>>();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     //parametros da url
@@ -23,10 +27,18 @@ const Catalog = () => {
       },
     };
 
-    axios(params).then((response) => {
-      debugger;
-      setPage(response.data);
-    });
+    //carregamento de loading
+    setIsLoading(true);
+
+    axios(params)
+      .then((response) => {
+        setPage(response.data);
+      })
+      .finally(() => {
+        //encerramento de loading
+        setIsLoading(false);
+      });
+
   }, []);
 
   return (
@@ -36,8 +48,8 @@ const Catalog = () => {
       </div>
 
       <div className="row">
-        
-        {page?.content.map((product) => {
+        {( isLoading ? <div>Aguarde carregando lista de produtos </div> :
+          page?.content.map((product) => {
           return (
             <div className="col-sm-6 col-lg-4 col-xl-3" key={product.id}>
               <Link to="/products/1">
@@ -45,8 +57,7 @@ const Catalog = () => {
               </Link>
             </div>
           );
-        })}
-        
+        }))}
       </div>
 
       <div className="row">
