@@ -1,7 +1,7 @@
 import Pagination from "components/Pagination";
 import ProductCard from "components/ProductCard";
 import { Link } from "react-router-dom";
-import { Product } from "types/products";
+import { Product } from "types/product";
 import "./styles.css";
 
 const Catalog = () => {

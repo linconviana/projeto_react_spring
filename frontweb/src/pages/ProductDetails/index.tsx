@@ -1,11 +1,20 @@
-import { Link } from "react-router-dom";
-
 import { ReactComponent as ArrowIcon } from "assets/images/arrow.svg";
+import axios from "axios";
 import ProductPrice from "components/ProductPrice";
+import { Link } from "react-router-dom";
+import { Product } from "types/product";
+import { BASE_URL } from "util/requests";
 
 import "./styles.css";
 
 const ProductDetails = () => {
+  let product: Product;
+
+  axios.get(BASE_URL + "/products/2").then((response) => {
+    debugger
+    console.log(response.data);
+  });
+
   return (
     <div className="product-details-container">
       <div className="base-card product-details-card">
