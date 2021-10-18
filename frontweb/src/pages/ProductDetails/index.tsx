@@ -9,12 +9,12 @@ const ProductDetails = () => {
   return (
     <div className="product-details-container">
       <div className="base-card product-details-card">
-        <div className="goback-container">
-          <ArrowIcon />
-          <Link to="/products">
+        <Link to="/products" className="product-link">
+          <div className="goback-container">
+            <ArrowIcon />
             <h3>Voltar</h3>
-          </Link>
-        </div>
+          </div>
+        </Link>
         <div className="row">
           <div className="col-xl-6">
             <div className="img-container">
