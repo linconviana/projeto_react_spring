@@ -24,7 +24,9 @@ const Admin = () => {
               <h1>User Crud</h1>
             </Route>
           </Switch>
-          <Pagination />
+          <div className="row">
+            <Pagination />
+          </div>
         </div>
       </div>
     </div>
