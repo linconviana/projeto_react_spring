@@ -1,11 +1,35 @@
+import axios from "axios";
 import Pagination from "components/Pagination";
 import ProductCard from "components/ProductCard";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Product } from "types/product";
+import { AxiosParams } from "types/vendor/axios";
+import { SpringPage } from "types/vendor/spring";
+import { BASE_URL } from "util/requests";
 import "./styles.css";
 
 const Catalog = () => {
-  const product: Product = {
+  const [page, setPage] = useState<SpringPage<Product>>();
+
+  useEffect(() => {
+    const params: AxiosParams = {
+      method: "GET",
+      url: `${BASE_URL}/products`,
+      params: {
+        page: 0,
+        size: 12,
+      },
+    };
+
+    axios(params).then((response) => {
+      debugger
+      setPage(response.data);
+      console.log(page);
+    });
+  }, []);
+
+  const product = {
     id: 2,
     name: "Smart TV",
     description:
@@ -28,7 +52,6 @@ const Catalog = () => {
 
   return (
     <div className=" container my-4 catalog-container">
-      
       <div className="row catalog-title-container">
         <h1>Catálogo de Produtos</h1>
       </div>
@@ -62,7 +85,6 @@ const Catalog = () => {
       </div>
 
       <Pagination />
-      
     </div>
   );
 };
