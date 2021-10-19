@@ -7,8 +7,8 @@ import { Product } from "types/product";
 import { AxiosParams } from "types/vendor/axios";
 import { SpringPage } from "types/vendor/spring";
 import { BASE_URL } from "util/requests";
+import CardLoader from "./CardLoader";
 
-//import {ReactComponent as Loading} from 'assets/images/ellipse.gif';
 import "./styles.css";
 
 const Catalog = () => {
@@ -48,11 +48,12 @@ const Catalog = () => {
       </div>
 
       <div className="row">
-        {( isLoading ? <div>Aguarde carregando lista de produtos </div> :
+        {( isLoading ? <div> Aguarde carregando lista de produtos... <br /><CardLoader /> <br /></div> :
           page?.content.map((product) => {
+
           return (
             <div className="col-sm-6 col-lg-4 col-xl-3" key={product.id}>
-              <Link to="/products/1">
+              <Link to="/products/2">
                 <ProductCard product={product} />
               </Link>
             </div>
@@ -61,7 +62,7 @@ const Catalog = () => {
       </div>
 
       <div className="row">
-        <Pagination />
+      {( isLoading ? "" : <Pagination />)}
       </div>
     </div>
   );
