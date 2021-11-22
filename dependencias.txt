@@ -1,3 +1,8 @@
 https://react-hook-form.com/get-started
 
 yarn add react-hook-form
+
+yarn add @popperjs/core@^2.10.2
+
+import usado somente no login auth
+yarn add qs @types/qs
