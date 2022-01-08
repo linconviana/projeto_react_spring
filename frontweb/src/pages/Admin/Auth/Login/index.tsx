@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
 import {Link} from 'react-router-dom';
 import ButtonIcon from 'components/ButtonIcon';
@@ -13,17 +13,19 @@ type FormData = {
 
 const Login = () => {
 
+    const [hasError, setHasError] = useState(false);
     const { register, handleSubmit } = useForm<FormData>();
     const onSubmit = (formData: FormData) => {
-debugger
-        
+
         requestBackendLogin(formData)
         .then(response => {
             debugger
+            setHasError(false);
             console.log('Sucesso', response);
         })
         .catch(error => {
             debugger
+            setHasError(true);
             console.log('Erro', error.message);
         })
     }
@@ -31,6 +33,13 @@ debugger
     return(
         <div className="base-card login-card">
             <h1>Login</h1>
+
+            {/*Mensagens de erros */}
+            {hasError &&
+                <div className="alert alert-danger">
+                    Ocorreu um erro de preenchimento
+                </div>
+            }
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-4">
                     <input {...register("username")} type="text" className="form-control base-input" placeholder="Email" name="username" />
