@@ -32,19 +32,4 @@ export const requestBackendLogin = (loginData : LoginData) => {
         headers
     });
 
-    /*const data = qs.stringify({
-        username:'maria@gmail.com',
-        password: '123456',
-        grand_type: 'password'
-    });
-    
-    return axios({
-        method: 'POST',
-        baseURL: BASE_URL,
-        url: 'oauth/token',
-        data: data,
-        headers: headers
-    });
-    */
-
 }
