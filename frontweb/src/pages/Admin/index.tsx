@@ -1,8 +1,9 @@
+import { Switch, Route } from "react-router";
 import Navbar from "./Navbar";
+import Users from "./User";
 import Pagination from "components/Pagination";
 
 import "./styles.css";
-import { Switch, Route } from "react-router";
 
 const Admin = () => {
   return (
@@ -21,7 +22,7 @@ const Admin = () => {
               <h1>Category Crud</h1>
             </Route>
             <Route path="/admin/users">
-              <h1>User Crud</h1>
+              <Users />
             </Route>
           </Switch>
           <div className="row">
