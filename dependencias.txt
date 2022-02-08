@@ -6,3 +6,7 @@ yarn add @popperjs/core@^2.10.2
 
 import usado somente no login auth
 yarn add qs @types/qs
+
+
+import JWT Decode (verificar se o token e valido)
+yarn add jwt-decode @types/jwt-decode

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import ButtonIcon from 'components/ButtonIcon';
-import { getAuthData, requestBackendLogin, saveAuthData } from 'util/requests';
+import { requestBackendLogin, saveAuthData } from 'util/requests';
 
 import './styles.css';
 
@@ -13,23 +13,24 @@ type FormData = {
 
 const Login = () => {
 
+    const history = useHistory();
+
     const [hasError, setHasError] = useState(false);
     const { register, handleSubmit, formState: {errors} } = useForm<FormData>();
     const onSubmit = (formData: FormData) => {
 
         requestBackendLogin(formData)
         .then(response => {
-            debugger
+            
             saveAuthData(response.data);
-            const token = getAuthData().access_token;
-            console.log(token);
+
             setHasError(false);
-            console.log('Sucesso', response);
+
+            /// :: Redirecionar para pagina admin
+            history.push('/admin');
         })
-        .catch(error => {
-            debugger
+        .catch(error => {           
             setHasError(true);
-            console.log('Erro', error.message);
         })
     }
 
