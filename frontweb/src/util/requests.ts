@@ -111,3 +111,12 @@ export const getTokenData = () : TokenData | undefined => {
         return undefined;
     }
 }
+
+export const isAuthenticated = () : boolean => {
+
+    /// :: Pegar dados do token
+    const tokenData = getTokenData();
+
+    /// :: Verificar se o token ja expirou
+    return (tokenData && tokenData.exp * 1000 > Date.now()) ? true :  false;
+}
