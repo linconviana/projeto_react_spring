@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from 'react-hook-form';
 import {Link, useHistory} from 'react-router-dom';
 import ButtonIcon from 'components/ButtonIcon';
-import { requestBackendLogin, saveAuthData } from 'util/requests';
+import { getTokenData, requestBackendLogin, saveAuthData } from 'util/requests';
+import { AuthContext } from "AuthContext";
 
 import './styles.css';
 
@@ -13,6 +14,8 @@ type FormData = {
 
 const Login = () => {
 
+    const {setAuthContextData} = useContext(AuthContext);
+    
     const history = useHistory();
 
     const [hasError, setHasError] = useState(false);
@@ -26,6 +29,11 @@ const Login = () => {
 
             setHasError(false);
 
+            /// :: Mudar state do navbar ao logar.
+            setAuthContextData({
+                authenticated: true,
+                tokenData: getTokenData()
+            })
             /// :: Redirecionar para pagina admin
             history.push('/admin');
         })
