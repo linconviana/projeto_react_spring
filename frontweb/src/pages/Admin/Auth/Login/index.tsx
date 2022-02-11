@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from 'react-hook-form';
-import {Link, useHistory} from 'react-router-dom';
+import {Link, useHistory, useLocation} from 'react-router-dom';
 import ButtonIcon from 'components/ButtonIcon';
 import { getTokenData, requestBackendLogin, saveAuthData } from 'util/requests';
 import { AuthContext } from "AuthContext";
@@ -12,8 +12,14 @@ type FormData = {
     password: string
 }
 
+type LocationState = {
+    from: string
+}
+
 const Login = () => {
 
+    const location = useLocation<LocationState>();
+    const { from } =location.state || { from: { pathname: '/admin'}};
     const {setAuthContextData} = useContext(AuthContext);
     
     const history = useHistory();
@@ -34,8 +40,10 @@ const Login = () => {
                 authenticated: true,
                 tokenData: getTokenData()
             })
-            /// :: Redirecionar para pagina admin
-            history.push('/admin');
+            /// :: Redirecionar para pagina admin ou ultima rota protegida digitada na url
+            /// :: replace para voltar para home ao voltar no navegador
+            ///history.push('/admin');
+            history.replace(from);
         })
         .catch(error => {           
             setHasError(true);

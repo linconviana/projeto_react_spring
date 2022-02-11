@@ -10,10 +10,14 @@ const PrivateRoute = ({children, path} : Props) => {
 debugger
     return(
         <>
+            {/*Location para armazenar rotas digitadas na url e apos logar redirecionar para ela. */}
             <Route
                 path={path}
-                render = {() =>
-                    isAuthenticated() ? children : <Redirect to='/admin/auth/login' />
+                render = {({location}) =>
+                    isAuthenticated() ? children : <Redirect to={{
+                        pathname: '/admin/auth/login',
+                        state: {from: location}
+                    }} />
                 }
             />
         </>
