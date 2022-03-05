@@ -2,10 +2,12 @@ import React, { useContext, useState } from "react";
 import { useForm } from 'react-hook-form';
 import {Link, useHistory, useLocation} from 'react-router-dom';
 import ButtonIcon from 'components/ButtonIcon';
-import { getTokenData, requestBackendLogin, saveAuthData } from 'util/requests';
+import { requestBackendLogin} from 'util/requests';
 import { AuthContext } from "AuthContext";
 
 import './styles.css';
+import { saveAuthData } from "util/storage";
+import { getTokenData } from "util/auth";
 
 type FormData = {
     username: string,
